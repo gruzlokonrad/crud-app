@@ -7,6 +7,7 @@ import AddPost from "./components/pages/AddPost";
 import Header from "./components/views/Header/Header";
 import { Container } from "react-bootstrap";
 import Footer from "./components/views/Footer";
+import PostEdit from "./components/pages/PostEdit";
 
 function App() {
   return (
@@ -14,9 +15,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/post/:id" element={<SinglePost />} />
+        <Route path="/post/edit/:postId" element={<PostEdit />} />
         <Route path="/post/add" element={<AddPost />} />
-        <Route path="/post/edit/:id" element={<SinglePost />} />
+        <Route path="/post/:postId" element={<SinglePost />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
