@@ -1,5 +1,5 @@
 import React from 'react'
-import AddPostForm from '../features/AddPostForm'
+import AddPostForm from '../features/PostForm'
 
 const AddPost = () => {
   return (
