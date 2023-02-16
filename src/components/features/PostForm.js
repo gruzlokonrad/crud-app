@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Form, Button } from 'react-bootstrap'
 import ReactQuill from 'react-quill';
 import DatePicker from "react-datepicker";
 import { useForm } from 'react-hook-form';
+import { getAllCategories } from '../../redux/categoriesRedux';
 
 import 'react-quill/dist/quill.snow.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const PostForm = (
   {
@@ -18,6 +20,7 @@ const PostForm = (
       title: '',
       author: '',
       publishedDate: '',
+      category: '',
       shortDescription: '',
       content: '',
     }
@@ -26,6 +29,7 @@ const PostForm = (
   const [formData, setFormDate] = useState(data);
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const categories = useSelector(getAllCategories)
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
   const navigate = useNavigate()
@@ -72,7 +76,6 @@ const PostForm = (
             min: 3,
             onChange: e => setFormDate({ ...formData, author: e.target.value })
           })}
-        // onChange={() => setFormDate({ ...formData, author: register('author').onChange })}
         />
         {
           errors.author &&
@@ -90,6 +93,28 @@ const PostForm = (
         />
         {
           dateError &&
+          <small className="d-block form-text text-danger mt-2">
+            This field is required
+          </small>
+        }
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Select
+          aria-label="Category"
+          value={formData.category}
+          defaultChecked={0}
+          {...register("category", {
+            required: true,
+            onChange: e => setFormDate({ ...formData, category: e.target.value })
+          })}
+        >
+          <option value="" disabled>Choose..</option>
+          {categories.map((category, index) => <option key={index} value={index}>{category}</option>)}
+        </Form.Select>
+        {
+          errors.category &&
           <small className="d-block form-text text-danger mt-2">
             This field is required
           </small>

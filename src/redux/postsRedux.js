@@ -1,16 +1,17 @@
 export const getAllPosts = ({ posts }) => posts
-export const getPostById = ({posts}, id) => posts.find((post) => post.id === id) 
+export const getPostById = ({ posts }, id) => posts.find((post) => post.id === id)
+export const getPostByCategory = ({ posts }, category) => posts.filter(post => post.category.toLowerCase() === category)
 
 const createActionName = actionName => `app/posts/${actionName}`
 const REMOVE_POST = createActionName('remove_post')
 const ADD_POST = createActionName('add_post')
 const UPDATE_POST = createActionName('update_post')
 
-export const removePost = payload => ({type: REMOVE_POST, payload});
-export const addPost = payload => ({type: ADD_POST, payload});
-export const updatePost = payload => ({type: UPDATE_POST, payload});
+export const removePost = payload => ({ type: REMOVE_POST, payload });
+export const addPost = payload => ({ type: ADD_POST, payload });
+export const updatePost = payload => ({ type: UPDATE_POST, payload });
 
-const postsReducer = (statePart = [], {type, payload}) => {
+const postsReducer = (statePart = [], { type, payload }) => {
   // console.log('payload', payload)
   switch (type) {
     case UPDATE_POST:

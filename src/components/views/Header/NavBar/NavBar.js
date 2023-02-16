@@ -9,7 +9,7 @@ import {
 const NavBar = () => {
   const navLinks = [
     { name: 'Home', url: '/' },
-    { name: 'Post', url: '/post/:id' },
+    { name: 'Categories', url: '/category' },
     { name: 'About', url: '/about' },
   ]
 

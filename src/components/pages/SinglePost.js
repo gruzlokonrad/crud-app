@@ -13,6 +13,7 @@ const SinglePost = () => {
     title,
     author,
     publishedDate,
+    category,
     shortDescription,
     content
   } = useSelector(state => getPostById(state, postId)) || {};
@@ -67,6 +68,7 @@ const SinglePost = () => {
           </header>
           <Card.Subtitle className='py-1'>Author: {author}</Card.Subtitle>
           <Card.Subtitle className='py-1'>Published: {publishedDate?.toLocaleDateString()}</Card.Subtitle>
+          <Card.Subtitle className='py-1'>Category: {category}</Card.Subtitle>
           <Card.Text>{shortDescription}</Card.Text>
           <p dangerouslySetInnerHTML={{ __html: content }} />
           {/* <Button variant="primary" onClick={() => handleRemove(id)}>Read more</Button> */}
