@@ -5,7 +5,7 @@ import shortid from 'shortid';
 import PostForm from './PostForm';
 
 
-const AddPostForm = ({ data }) => {
+const AddPostForm = () => {
   const dispatch = useDispatch()
   const submitPost = (formData) => dispatch(addPost({ ...formData, id: shortid() }))
   return (

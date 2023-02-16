@@ -9,14 +9,14 @@ import {
 const NavBar = () => {
   const navLinks = [
     { name: 'Home', url: '/' },
-    { name: 'Post', url: '/post/:id' },
+    { name: 'Categories', url: '/category' },
     { name: 'About', url: '/about' },
   ]
 
   return (
     <Navbar bg="primary" variant="dark" className='text-white rounded my-4 p-2'>
       <Container>
-        <Navbar.Brand href="#home">Logo</Navbar.Brand>
+        <Navbar.Brand href="/">Logo</Navbar.Brand>
         <Nav className="ml-auto">
           {navLinks.map(({ name, url }, index) =>
             <Nav.Link key={index} as={NavLink} to={url}>{name}</Nav.Link>

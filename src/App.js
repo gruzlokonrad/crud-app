@@ -8,6 +8,8 @@ import { Container } from "react-bootstrap";
 import Footer from "./components/views/Footer";
 import AddPostForm from "./components/features/AddPostForm";
 import EditPostForm from "./components/features/EditPostForm";
+import Categories from "./components/pages/Categories";
+import SingleCategory from "./components/pages/SingleCategory";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/post/edit/:postId" element={<EditPostForm />} />
         <Route path="/post/add" element={<AddPostForm />} />
         <Route path="/post/:postId" element={<SinglePost />} />
+        <Route path="/category/:category" element={<SingleCategory />} />
+        <Route path="/category" element={<Categories />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
