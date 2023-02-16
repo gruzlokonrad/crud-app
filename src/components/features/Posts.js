@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Posts = () => {
   const posts = useSelector(getAllPosts);
-
+  
   return (
     <Row xs={1} sm={2} lg={3} xxl={4} className='gy-3 my-3'>
       {posts.map(({ id, title, author, publishedDate, shortDescription }, index) => (
@@ -17,7 +17,7 @@ const Posts = () => {
             <Card.Body>
               <Card.Title>{title}</Card.Title>
               <Card.Subtitle className='py-1'>Author: {author}</Card.Subtitle>
-              <Card.Subtitle className='py-1'>Published: {publishedDate}</Card.Subtitle>
+              <Card.Subtitle className='py-1'>Published: {publishedDate.toLocaleDateString()}</Card.Subtitle>
               <Card.Text>{shortDescription}</Card.Text>
               <Link to={`/post/${id}`}>
                 <Button variant="primary">Read more</Button>
